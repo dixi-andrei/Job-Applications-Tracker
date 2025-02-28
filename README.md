@@ -58,7 +58,7 @@ This project is a **Job Application Tracking System** built using **Spring Boot*
 
 ---
 
-## **💻 How to Run the Project**  
+## ** How to Run the Project**  
 
 ```bash
 # Clone the repository
