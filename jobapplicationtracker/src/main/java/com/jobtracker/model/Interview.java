@@ -39,4 +39,59 @@ public class Interview {
 
     private Boolean completed = false;
 
+    public Long getId() {
+        return id;
+    }
+
+    public JobApplication getJobApplication() {
+        return jobApplication;
+    }
+
+    public LocalDateTime getInterviewDateTime() {
+        return interviewDateTime;
+    }
+
+    public InterviewType getInterviewType() {
+        return interviewType;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getPreparationNotes() {
+        return preparationNotes;
+    }
+
+    public Boolean getCompleted() {
+        return completed;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setJobApplication(JobApplication jobApplication) {
+        this.jobApplication = jobApplication;
+    }
+
+    public void setInterviewDateTime(LocalDateTime interviewDateTime) {
+        this.interviewDateTime = interviewDateTime;
+    }
+
+    public void setInterviewType(InterviewType interviewType) {
+        this.interviewType = interviewType;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setPreparationNotes(String preparationNotes) {
+        this.preparationNotes = preparationNotes;
+    }
+
+    public void setCompleted(Boolean completed) {
+        this.completed = completed;
+    }
 }

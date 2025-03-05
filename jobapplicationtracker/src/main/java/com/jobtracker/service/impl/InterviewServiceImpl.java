@@ -108,7 +108,7 @@ public class InterviewServiceImpl implements InterviewService {
 
 
 
-        List<Interview> interviews = interviewRepository.findByInterviewUserIdInRage(currentUser.getId(), start,end);
+        List<Interview> interviews = interviewRepository.findInterviewsByUserIdInDateRange(currentUser.getId(), start,end);
         return interviews.stream()
                 .map(this::mapToDto)
                 .collect(Collectors.toList());
