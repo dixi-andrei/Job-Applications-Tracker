@@ -12,10 +12,15 @@ public class LoginResponse {
     private String token;
     private String username;
     private Long userId;
+    private UserDTO user;
+
 
     public LoginResponse(String jwt, UserDTO userDTO) {
+        this.token = jwt;
+        this.username = userDTO.getUsername();
+        this.userId = userDTO.getId();
+        this.user = userDTO;
     }
-
     public String getToken() {
         return token;
     }

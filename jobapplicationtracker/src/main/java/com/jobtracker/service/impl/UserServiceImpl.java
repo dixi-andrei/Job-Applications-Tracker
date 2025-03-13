@@ -4,6 +4,7 @@ import com.jobtracker.dto.LoginRequest;
 import com.jobtracker.dto.LoginResponse;
 import com.jobtracker.dto.UserDTO;
 import com.jobtracker.exception.AuthenticationException;
+import com.jobtracker.exception.CustomAuthenticationException;
 import com.jobtracker.exception.ResourceNotFoundException;
 import com.jobtracker.exception.UserAlreadyExistsException;
 import com.jobtracker.model.User;
@@ -60,21 +61,17 @@ public class UserServiceImpl implements UserService {
                             loginRequest.getPassword()
                     )
             );
-
             SecurityContextHolder.getContext().setAuthentication(authentication);
-
             final UserDetails userDetails = (UserDetails) authentication.getPrincipal();
             final String jwt = jwtUtil.generateToken(userDetails);
-
             User user = userRepository.findByUsername(loginRequest.getUsername())
-                    .orElseThrow(() -> new AuthenticationException("User not found"));
-
+                    .orElseThrow(() -> new CustomAuthenticationException("User not found"));
             return new LoginResponse(jwt, mapToDto(user));
-        }catch (Exception e){
-            throw new AuthenticationException("Invalid username or password");
+        } catch (org.springframework.security.core.AuthenticationException e) {
+            // Log the exception
+            throw new CustomAuthenticationException("Invalid username or password");
         }
     }
-
     @Override
     public UserDTO getUserById(Long id) {
         User user = userRepository.findById(id)
@@ -122,7 +119,8 @@ public class UserServiceImpl implements UserService {
         UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());
         userDTO.setEmail(user.getEmail());
-        userDTO.setUsername(userDTO.getUsername());
+        userDTO.setUsername(user.getUsername());
+
 
         return userDTO;
     }
