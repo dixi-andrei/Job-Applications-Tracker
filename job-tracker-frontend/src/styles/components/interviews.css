@@ -1,0 +1,372 @@
+/* =============================================
+   INTERVIEW COMPONENTS STYLES
+   ============================================= */
+
+/* Interview List Styles */
+.interviews-container {
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.interviews-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.interviews-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.interview-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.interview-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.25rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.interview-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.interview-company {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #444;
+}
+
+.interview-position {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.interview-date-time {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    color: #555;
+}
+
+.interview-date-time svg {
+    margin-right: 0.5rem;
+    color: #5c6bc0;
+}
+
+.interview-type {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.type-onsite {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.type-phone {
+    background-color: #e8f5e9;
+    color: #388e3c;
+}
+
+.type-video {
+    background-color: #fff3e0;
+    color: #f57c00;
+}
+
+.interview-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* Interview Detail Styles */
+.interview-detail {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.interview-detail-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.interview-detail-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.interview-detail-company {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.interview-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.interview-info-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-label {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 0.25rem;
+}
+
+.info-value {
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.interview-notes {
+    margin-top: 1.5rem;
+}
+
+.notes-heading {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 0.75rem;
+}
+
+.interview-notes-content {
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Interview Form Styles */
+.interview-form {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.form-section {
+    margin-bottom: 1.5rem;
+}
+
+.form-section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fafafa;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control:focus {
+    border-color: #7986cb;
+    box-shadow: 0 0 0 2px rgba(121, 134, 203, 0.2);
+    outline: none;
+}
+
+.form-select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fafafa;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+}
+
+.form-textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Interview Calendar Styles */
+.interview-calendar-container {
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.calendar-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.calendar-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.calendar-nav-btn {
+    background: transparent;
+    border: none;
+    color: #5c6bc0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.calendar-nav-btn:hover {
+    background: rgba(92, 107, 192, 0.1);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.calendar-day-header {
+    text-align: center;
+    font-weight: 500;
+    color: #666;
+    padding: 0.5rem;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background: #f9f9f9;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    position: relative;
+}
+
+.calendar-day:hover {
+    background: #f0f0f0;
+}
+
+.calendar-day.current {
+    border: 2px solid #5c6bc0;
+}
+
+.calendar-day.has-interviews .day-number {
+    color: #5c6bc0;
+    font-weight: 600;
+}
+
+.calendar-day.other-month {
+    opacity: 0.4;
+}
+
+.day-number {
+    display: block;
+    text-align: right;
+    margin-bottom: 0.5rem;
+}
+
+.day-interviews {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.day-interview-indicator {
+    height: 4px;
+    background: #5c6bc0;
+    border-radius: 2px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .interview-list {
+        grid-template-columns: 1fr;
+    }
+
+    .interview-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .calendar-grid {
+        gap: 0.25rem;
+    }
+
+    .calendar-day {
+        padding: 0.25rem;
+    }
+}

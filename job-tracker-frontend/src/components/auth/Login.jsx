@@ -1,32 +1,39 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
+import React, { useState, useContext } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+import Button from '../ui/Button';
+import Card from '../ui/Card';
+import { useForm } from '../../hooks/useForm';
 
 const Login = () => {
-    const [credentials, setCredentials] = useState({ username: '', password: '' });
-    const [error, setError] = useState('');
-    const { login } = useAuth();
+    const { login } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setCredentials({ ...credentials, [name]: value });
-    };
+    const { values, handleChange } = useForm({
+        username: '',
+        password: ''
+    });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         setError('');
+
         try {
-            await login(credentials);
+            await login(values);
             navigate('/dashboard');
         } catch (err) {
-            setError('Invalid username or password');
+            setError(err.response?.data?.message || 'Login failed. Please check your credentials.');
+        } finally {
+            setIsLoading(false);
         }
     };
 
     return (
-        <div className="login-container">
-            <h2>Login to Your Account</h2>
+        <Card className="auth-card">
+            <h2>Log In to Your Account</h2>
             {error && <div className="error-message">{error}</div>}
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
@@ -35,7 +42,7 @@ const Login = () => {
                         type="text"
                         id="username"
                         name="username"
-                        value={credentials.username}
+                        value={values.username}
                         onChange={handleChange}
                         required
                     />
@@ -46,14 +53,19 @@ const Login = () => {
                         type="password"
                         id="password"
                         name="password"
-                        value={credentials.password}
+                        value={values.password}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <button type="submit" className="btn-primary">Login</button>
+                <Button type="submit" disabled={isLoading}>
+                    {isLoading ? 'Logging in...' : 'Log In'}
+                </Button>
             </form>
-        </div>
+            <p className="auth-link">
+                Don't have an account? <Link to="/register">Register here</Link>
+            </p>
+        </Card>
     );
 };
 

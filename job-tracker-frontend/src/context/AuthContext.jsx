@@ -1,88 +1,97 @@
-// src/context/AuthContext.jsx
 import React, { createContext, useState, useEffect } from 'react';
-import { loginUser, registerUser, getCurrentUser, logoutUser } from '../api/authApi';
+import { login, getCurrentUser, register, updateUser } from '../api/authApi';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        // Check if user is already logged in
-        const checkAuthStatus = async () => {
-            try {
-                const token = localStorage.getItem('token');
-                if (token) {
-                    const user = await getCurrentUser();
-                    setCurrentUser(user);
-                }
-            } catch (err) {
-                console.error('Authentication check failed:', err);
-                localStorage.removeItem('token');
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        checkAuthStatus();
+        const token = localStorage.getItem('token');
+        if (token) {
+            fetchCurrentUser();
+        } else {
+            setIsLoading(false);
+        }
     }, []);
 
-    const login = async (credentials) => {
-        setLoading(true);
-        setError(null);
+    const fetchCurrentUser = async () => {
         try {
-            const response = await loginUser(credentials);
-            localStorage.setItem('token', response.token);
-            setCurrentUser(response.user);
-            return response.user;
+            setIsLoading(true);
+            const userData = await getCurrentUser();
+            setCurrentUser(userData);
+            setError(null);
         } catch (err) {
-            setError(err.response?.data?.message || 'Login failed');
+            setError(err.message);
+            localStorage.removeItem('token');
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const login = async (credentials) => {
+        try {
+            setIsLoading(true);
+            const response = await login(credentials);
+            localStorage.setItem('token', response.token);
+            await fetchCurrentUser();
+            return response;
+        } catch (err) {
+            setError(err.message);
             throw err;
         } finally {
-            setLoading(false);
+            setIsLoading(false);
         }
     };
 
     const register = async (userData) => {
-        setLoading(true);
-        setError(null);
         try {
-            const user = await registerUser(userData);
-            return user;
+            setIsLoading(true);
+            const response = await register(userData);
+            return response;
         } catch (err) {
-            setError(err.response?.data?.message || 'Registration failed');
+            setError(err.message);
             throw err;
         } finally {
-            setLoading(false);
+            setIsLoading(false);
         }
     };
 
-    const logout = async () => {
+    const logout = () => {
+        localStorage.removeItem('token');
+        setCurrentUser(null);
+    };
+
+    const updateProfile = async (id, userData) => {
         try {
-            await logoutUser();
+            setIsLoading(true);
+            const updatedUser = await updateUser(id, userData);
+            setCurrentUser(updatedUser);
+            return updatedUser;
         } catch (err) {
-            console.error('Logout error:', err);
+            setError(err.message);
+            throw err;
         } finally {
-            localStorage.removeItem('token');
-            setCurrentUser(null);
+            setIsLoading(false);
         }
     };
 
-    const updateUserState = (userData) => {
-        setCurrentUser(userData);
-    };
-
-    const value = {
-        currentUser,
-        loading,
-        error,
-        login,
-        register,
-        logout,
-        updateUserState
-    };
-
-    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+    return (
+        <AuthContext.Provider
+            value={{
+                currentUser,
+                isLoading,
+                error,
+                login,
+                register,
+                logout,
+                updateProfile,
+                fetchCurrentUser
+            }}
+        >
+            {children}
+        </AuthContext.Provider>
+    );
 };

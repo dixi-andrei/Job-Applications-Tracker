@@ -1,4 +1,3 @@
-// src/context/ThemeContext.jsx
 import React, { createContext, useState, useEffect } from 'react';
 
 export const ThemeContext = createContext();
@@ -7,23 +6,25 @@ export const ThemeProvider = ({ children }) => {
     const [darkMode, setDarkMode] = useState(false);
 
     useEffect(() => {
-        const savedTheme = localStorage.getItem('darkMode');
+        const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
-            setDarkMode(JSON.parse(savedTheme));
+            setDarkMode(savedTheme === 'dark');
         } else {
-            // Check user's preferred color scheme
+            // Check user's system preference
             const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
             setDarkMode(prefersDarkMode);
         }
     }, []);
 
     useEffect(() => {
+        // Apply theme to document
         if (darkMode) {
-            document.body.classList.add('dark-mode');
+            document.documentElement.classList.add('dark-theme');
+            localStorage.setItem('theme', 'dark');
         } else {
-            document.body.classList.remove('dark-mode');
+            document.documentElement.classList.remove('dark-theme');
+            localStorage.setItem('theme', 'light');
         }
-        localStorage.setItem('darkMode', JSON.stringify(darkMode));
     }, [darkMode]);
 
     const toggleTheme = () => {

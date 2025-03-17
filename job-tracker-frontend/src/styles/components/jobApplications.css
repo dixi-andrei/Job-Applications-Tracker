@@ -1,0 +1,206 @@
+/* Job Applications styles */
+
+.job-application-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.job-application-card {
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    padding: 1.5rem;
+    transition: transform var(--transition-fast);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.job-application-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.job-application-info {
+    flex-grow: 1;
+}
+
+.job-application-company {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.job-application-position {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.job-application-meta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    font-size: var(--text-sm);
+    color: var(--text-tertiary);
+}
+
+.job-application-status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.status-applied {
+    background-color: rgba(52, 152, 219, 0.2);
+    color: #3498db;
+}
+
+.status-interviewing {
+    background-color: rgba(241, 196, 15, 0.2);
+    color: #f1c40f;
+}
+
+.status-offered {
+    background-color: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+}
+
+.status-rejected {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+}
+
+.job-application-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.job-application-action-button {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.job-application-action-button:hover {
+    color: var(--primary);
+}
+
+.job-application-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.job-application-filter {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+}
+
+.job-application-filter.active {
+    background-color: var(--primary);
+    color: white;
+}
+
+.job-application-detail {
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    padding: 2rem;
+}
+
+.job-application-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.job-application-title {
+    flex-grow: 1;
+}
+
+.job-application-date {
+    font-size: var(--text-sm);
+    color: var(--text-tertiary);
+    margin-bottom: 0.5rem;
+}
+
+.job-application-section {
+    margin-bottom: 2rem;
+}
+
+.job-application-section-title {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.job-application-timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.job-application-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.35rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--border-color);
+}
+
+.job-application-timeline-item {
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.job-application-timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.job-application-timeline-point {
+    position: absolute;
+    left: -2rem;
+    top: 0;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background-color: var(--primary);
+}
+
+.job-application-timeline-date {
+    font-size: var(--text-xs);
+    color: var(--text-tertiary);
+    margin-bottom: 0.25rem;
+}
+
+.job-application-timeline-title {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.job-application-timeline-description {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}

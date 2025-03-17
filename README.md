@@ -25,7 +25,7 @@ This project is a **Job Application Tracking System** built using **Spring Boot*
 - **Database:** PostgreSQL.  
 - **Security:** JWT authentication, BCrypt password hashing.  
 - **API Documentation:** Swagger.  
-- **Frontend (In Progress):** React.js with Material UI.  
+- **Frontend :** React.js with Material UI.  
 
 ---
 

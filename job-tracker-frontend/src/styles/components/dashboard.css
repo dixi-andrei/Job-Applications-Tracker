@@ -1,0 +1,130 @@
+/* Dashboard styles */
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-card {
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    padding: 1.5rem;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.dashboard-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.dashboard-card-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.dashboard-card-icon {
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.dashboard-card-value {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-card-subtitle {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+
+.dashboard-card-footer {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dashboard-card-link {
+    font-size: var(--text-sm);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.dashboard-chart-container {
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.dashboard-chart-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.dashboard-recent-activity {
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    padding: 1.5rem;
+}
+
+.dashboard-activity-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dashboard-activity-item:last-child {
+    border-bottom: none;
+}
+
+.dashboard-activity-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+    color: white;
+}
+
+.dashboard-activity-content {
+    flex-grow: 1;
+}
+
+.dashboard-activity-title {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.dashboard-activity-time {
+    font-size: var(--text-sm);
+    color: var(--text-tertiary);
+}
